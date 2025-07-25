@@ -1,0 +1,5 @@
+aiogram
+asyncio
+hcaptcha
+fastapi[standard]
+uvicorn
