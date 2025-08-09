@@ -12,7 +12,7 @@ dp = Dispatcher()
 
 
 async def load_plugins(dp: Dispatcher):  # MadBot™️ Original©️ + youmibot source code
-    for path, _, files in os.walk("plugins"):
+    for path, _, files in os.walk("plugins"):  # FIXME: unsafe shit
         for file in files:
             if not file.endswith(".py"):
                 continue
