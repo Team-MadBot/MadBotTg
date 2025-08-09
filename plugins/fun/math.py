@@ -53,7 +53,7 @@ async def mathcmd(message: Message, state: FSMContext):
         )
         return
 
-    choice = ["+", "-"]
+    choice = ("+", "-")
     tosolve = f"{random.randint(1, 99)} {random.choice(choice)} {random.randint(1, 99)}"
     answer = eval(tosolve)  # NOTE: unsafe shit :D
     start = time.time()
@@ -109,7 +109,7 @@ async def handle_answer(message: Message, state: FSMContext):
     await message.bot.delete_message(message.chat.id, data["bot_msg_id"])
     if data["user_answer"] == data["correct_answer"]:
         await message.reply(
-            f"Ваш ответ правильный! Вы решили пример за {aiomd.hcode(round(data['end_time'] - data['start_time'], 3))} секунд.",
+            f"Ваш ответ правильный! Вы решили пример за {aiomd.hcode(round(data['end_time'] - data['start_time'], 3))} секунды.",
             parse_mode="HTML",
         )
     else:
