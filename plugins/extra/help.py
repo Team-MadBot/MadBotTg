@@ -27,7 +27,7 @@ async def helpcmd(message: Message):
                 cmds += [[l_cb.commands[0], h.callback.__doc__]]
             except Exception:
                 traceback.print_exc()
-    
+
     cmds.sort(key=lambda x: x[0])
     txt = "<strong>Список всех команд:</strong>\n\n"
     for i in cmds:
