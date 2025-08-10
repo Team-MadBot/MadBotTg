@@ -3,7 +3,6 @@ import random
 from aiogram import Dispatcher, Router, types
 from aiogram.filters import Command
 from aiogram.filters.callback_data import CallbackData
-from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
 router = Router()
@@ -14,7 +13,7 @@ class DoorsCallback(CallbackData, prefix="doors"):
 
 
 @router.message(Command("doors"))
-async def doorscmd(message: Message, state: FSMContext):
+async def doorscmd(message: Message):
     assert message.bot is not None
     assert message.from_user is not None
 
