@@ -28,7 +28,7 @@ class MathFormData(TypedDict):
     user_answer: int
 
 
-class MathFormCancel(CallbackData, prefix="math_cancel_"):
+class MathFormCancel(CallbackData, prefix="math_cancel"):
     user_id: int
 
 
