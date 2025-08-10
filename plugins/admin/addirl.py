@@ -11,6 +11,7 @@ router = Router()
 
 @router.message(Command("addirl"), F.from_user.id.in_(settings["owners"]))
 async def _addirl(message: Message):
+    """Добавить знакомого в РЖ в список"""
     assert message.from_user is not None
     assert message.text is not None
 

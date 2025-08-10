@@ -9,6 +9,7 @@ router = Router()
 
 @router.message(Command("enablecaptcha"))
 async def _enable_captcha(message: Message):
+    """Подключить одобрение заявок в группе через капчу"""
     assert message.from_user is not None
 
     if message.chat.type == "private":

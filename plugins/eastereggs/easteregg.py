@@ -7,6 +7,7 @@ router = Router()
 
 @router.message(Command("easteregg"))
 async def easter_egg_handler(message: Message):
+    """Пасхалко"""
     await message.reply("Христос воскрес!")
 
 

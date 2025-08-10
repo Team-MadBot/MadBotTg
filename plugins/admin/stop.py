@@ -9,6 +9,7 @@ router = Router()
 
 @router.message(Command("stop"))
 async def _stop(message: Message):
+    """Вызвать инфаркт у бота"""
     assert message.from_user is not None
 
     if message.from_user.id in settings["owners"]:

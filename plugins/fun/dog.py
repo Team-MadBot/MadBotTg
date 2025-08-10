@@ -10,6 +10,7 @@ router = Router()
 
 @router.message(Command("dog"))
 async def dogcmd(message: Message):
+    """Получите случайное изображение пёселя"""
     assert message.bot is not None
     assert message.from_user is not None
 

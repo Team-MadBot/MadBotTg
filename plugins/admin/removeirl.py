@@ -11,6 +11,7 @@ router = Router()
 
 @router.message(Command("removeirl"), F.from_user.id.in_(settings["owners"]))
 async def _removeirl(message: Message):
+    """Убрать пользователя из списка знакомых в РЖ"""
     assert message.from_user is not None
     assert message.text is not None
 

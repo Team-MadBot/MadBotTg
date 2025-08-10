@@ -43,6 +43,7 @@ def check_digit(text: str) -> bool:
 
 @router.message(Command("math"))
 async def mathcmd(message: Message, state: FSMContext):
+    """Решите математический пример за ограниченное время"""
     assert message.bot is not None
     assert message.from_user is not None
 

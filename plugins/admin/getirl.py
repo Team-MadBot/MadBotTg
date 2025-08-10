@@ -10,6 +10,7 @@ router = Router()
 
 @router.message(Command("getirl"), F.from_user.id.in_(settings["owners"]))
 async def _getirl(message: Message):
+    """Проверить, есть ли человек в списке знакомых из РЖ"""
     assert message.from_user is not None
     assert message.text is not None
 

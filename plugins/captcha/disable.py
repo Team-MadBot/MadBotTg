@@ -9,6 +9,7 @@ router = Router()
 
 @router.message(Command("disablecaptcha"))
 async def _disable_captcha(message: Message):
+    """Отключить одобрение заявок в группе через капчу"""
     assert message.from_user is not None
 
     if message.chat.type == "private":

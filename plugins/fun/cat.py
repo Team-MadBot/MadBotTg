@@ -10,6 +10,7 @@ router = Router()
 
 @router.message(Command("cat"))
 async def catcmd(message: Message):
+    """Получите случайное изображение котейки"""
     assert message.bot is not None
     assert message.from_user is not None
 

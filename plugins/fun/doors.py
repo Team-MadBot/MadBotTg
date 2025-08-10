@@ -14,6 +14,7 @@ class DoorsCallback(CallbackData, prefix="doors"):
 
 @router.message(Command("doors"))
 async def doorscmd(message: Message):
+    """Попробуйте угадать правильную дверь"""
     assert message.bot is not None
     assert message.from_user is not None
 
