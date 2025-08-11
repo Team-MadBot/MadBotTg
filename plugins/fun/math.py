@@ -47,10 +47,11 @@ async def mathcmd(message: Message, state: FSMContext):
     assert message.bot is not None
     assert message.from_user is not None
 
-    data: MathFormData = await state.get_data()  # type: ignore
-    if data:
+    cur_state = await state.get_state()
+    if cur_state is not None:
         await message.reply(
-            "Вы ещё не закончили прошлую игру. Закончите предыдущую игру, после чего Вы сможете начать играть в /math по-новой."
+            "Вы ещё не закончили предыдущее действие с ботом, ожидающее Вашего ответа. "
+            "Закончите его, после чего Вы сможете начать играть в /math."
         )
         return
 
@@ -85,9 +86,9 @@ async def mathcmd(message: Message, state: FSMContext):
         bot_msg_id=msg.message_id,
     )
     await asyncio.sleep(MATH_COOLDOWN)
-    data: MathFormData = await state.get_data()  # type: ignore
+    data = await state.get_data()
 
-    if not data or data["bot_msg_id"] != msg.message_id:
+    if not data or data.get("bot_msg_id", 0) != msg.message_id:
         return
 
     await state.clear()
