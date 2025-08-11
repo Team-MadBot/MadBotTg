@@ -3,6 +3,7 @@ import importlib
 import logging
 import os
 import sys
+import traceback
 
 from aiogram import Bot, Dispatcher
 
@@ -21,14 +22,18 @@ async def load_plugins(dp: Dispatcher):  # MadBot™️ Original©️ + youmibot
             if egg in settings["plugins_ignore"]:
                 continue
 
-            if egg in sys.modules:
-                importlib.reload(sys.modules[egg])
-                module = sys.modules[egg]
-            else:
-                module = importlib.import_module(egg)
+            try:
+                if egg in sys.modules:
+                    importlib.reload(sys.modules[egg])
+                    module = sys.modules[egg]
+                else:
+                    module = importlib.import_module(egg)
 
-            if hasattr(module, "setup"):
-                await getattr(module, "setup")(dp)
+                if hasattr(module, "setup"):
+                    await getattr(module, "setup")(dp)
+            except Exception:
+                print(f"FAILED to load {egg}:")
+                traceback.print_exc()
 
 
 async def main() -> None:
