@@ -83,6 +83,7 @@ async def handle_solo_rps_answer(
         await query.answer("Не для тебя кнопочка!", show_alert=True)
         return
 
+    await state.clear()
     await query.answer()
     bot_answer = random.choice([op for op in RPSOption])
     user_answer = callback_data.user_decision
