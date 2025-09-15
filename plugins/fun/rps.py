@@ -36,14 +36,14 @@ WIN_DECISION = {
 }
 
 
-@router.message(Command("rock-paper-scissors", "rps"))
+@router.message(Command("rps"))
 async def rpscmd(message: Message, state: FSMContext):
     """Камень-ножницы-бумага. Играйте в одиночку либо с другом, ответив на его сообщение этой командой"""
     assert message.bot is not None
     assert message.from_user is not None
 
     if message.reply_to_message is not None:  # TODO
-        await message.reply("Я пошутил, никаких дуэлей.")
+        await message.reply("Я пошутил, никаких дуэлей (пока что).")
         return
 
     builder = InlineKeyboardBuilder()
