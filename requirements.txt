@@ -3,3 +3,4 @@ hcaptcha
 sqlalchemy[asyncio]==2.0.41
 aiosqlite==0.21.0
 alembic==1.16.1
+python-dotenv
