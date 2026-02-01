@@ -25,7 +25,11 @@ async def default_inline_handler(query: InlineQuery):
                 description=r"Добавляет ┬─┬ノ( º _ ºノ) к Вашему сообщению",
                 input_message_content=types.InputTextMessageContent(message_text=r"┬─┬ノ( º _ ºノ)")
             )
-        ]
+        ],
+        button=types.InlineQueryResultsButton(
+            text="Как этим пользоваться?",
+            start_parameter="inline_help"
+        )
     )
 
 
