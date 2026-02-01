@@ -1,5 +1,5 @@
-from aiogram import Dispatcher, F, Router, types
-from aiogram.types import InlineQuery
+from aiogram import Dispatcher, F, Router
+from aiogram.types import InlineQuery, InlineQueryResultArticle, InputTextMessageContent, InlineQueryResultsButton
 
 router = Router()
 
@@ -7,26 +7,26 @@ router = Router()
 async def default_inline_handler(query: InlineQuery):
     await query.answer(
         [
-            types.InlineQueryResultArticle(
+            InlineQueryResultArticle(
                 id="shrug",
                 title="Shrug",
                 description=r"Добавляет ¯\_(ツ)_/¯ к Вашему сообщению",
-                input_message_content=types.InputTextMessageContent(message_text=r"¯\_(ツ)_/¯")
+                input_message_content=InputTextMessageContent(message_text=r"¯\_(ツ)_/¯")
             ),
-            types.InlineQueryResultArticle(
+            InlineQueryResultArticle(
                 id="tableflip",
                 title="Tableflip",
                 description=r"Добавляет (╯°□°)╯︵ ┻━┻ к Вашему сообщению",
-                input_message_content=types.InputTextMessageContent(message_text=r"(╯°□°)╯︵ ┻━┻")
+                input_message_content=InputTextMessageContent(message_text=r"(╯°□°)╯︵ ┻━┻")
             ),
-            types.InlineQueryResultArticle(
+            InlineQueryResultArticle(
                 id="unflip",
                 title="Unflip",
                 description=r"Добавляет ┬─┬ノ( º _ ºノ) к Вашему сообщению",
-                input_message_content=types.InputTextMessageContent(message_text=r"┬─┬ノ( º _ ºノ)")
+                input_message_content=InputTextMessageContent(message_text=r"┬─┬ノ( º _ ºノ)")
             )
         ],
-        button=types.InlineQueryResultsButton(
+        button=InlineQueryResultsButton(
             text="Как этим пользоваться?",
             start_parameter="inline_help"
         )
