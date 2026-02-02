@@ -11,9 +11,9 @@ async def _start(message: Message):
     if message.text == "/start inline_help":
         await message.reply(
             "<strong>Как пользоваться инлайн-режимом?</strong>\n\n"
-            "Чтобы написать сообщение с добавлением символьного эмодзи в конце сообщения, введите заголовок, указанный в списке, "
-            "а затем через пробел начните писать своё сообщение.\n\n<strong>Пример:</strong> <code>shrug Привет, мир</code> "
-            "превратится в <code>Привет, мир ¯\\_(ツ)_/¯</code>.",
+            "Чтобы написать сообщение с добавлением каомодзи в конце сообщения, введите Ваше сообщение, "
+            "а затем выберите в меню желаемый каомодзи.\n\n<strong>Пример:</strong> <code>Привет, мир</code> "
+            "превратится в <code>Привет, мир ¯\\_(ツ)_/¯</code>, если выбрать Shrug.",
             parse_mode="html",
             reply_markup=types.InlineKeyboardMarkup(
                 inline_keyboard=[

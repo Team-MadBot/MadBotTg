@@ -1,30 +1,23 @@
-from aiogram import Dispatcher, F, Router
+from aiogram import Dispatcher, Router
 from aiogram.types import InlineQuery, InlineQueryResultArticle, InputTextMessageContent, InlineQueryResultsButton
 
 router = Router()
+KAOMOJIS = {
+    "shrug": r"¯\_(ツ)_/¯",
+    "tableflip": r"(╯°□°)╯︵ ┻━┻",
+    "unflip": r"┬─┬ノ( º _ ºノ)"
+}
 
-@router.inline_query(F.query == "")
+@router.inline_query()
 async def default_inline_handler(query: InlineQuery):
     await query.answer(
         [
             InlineQueryResultArticle(
-                id="shrug",
-                title="Shrug",
-                description=r"Добавляет ¯\_(ツ)_/¯ к Вашему сообщению",
-                input_message_content=InputTextMessageContent(message_text=r"¯\_(ツ)_/¯")
-            ),
-            InlineQueryResultArticle(
-                id="tableflip",
-                title="Tableflip",
-                description=r"Добавляет (╯°□°)╯︵ ┻━┻ к Вашему сообщению",
-                input_message_content=InputTextMessageContent(message_text=r"(╯°□°)╯︵ ┻━┻")
-            ),
-            InlineQueryResultArticle(
-                id="unflip",
-                title="Unflip",
-                description=r"Добавляет ┬─┬ノ( º _ ºノ) к Вашему сообщению",
-                input_message_content=InputTextMessageContent(message_text=r"┬─┬ノ( º _ ºノ)")
-            )
+                id=kaomoji,
+                title=kaomoji.capitalize(),
+                description=f"Добавляет {KAOMOJIS[kaomoji]} к Вашему сообщению",
+                input_message_content=InputTextMessageContent(message_text=f"{query.query} {KAOMOJIS[kaomoji]}")
+            ) for kaomoji in KAOMOJIS
         ],
         button=InlineQueryResultsButton(
             text="Как этим пользоваться?",
